@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SeedMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO seed (
+  user_id,
+  name
+) VALUES (
+  #{userId},
+  #{name}
+);
+    </insert>
+
+    <update id="update">
+UPDATE seed
+SET
+  name = #{seed.name}
+WHERE
+  id = #{seed.id}
+    </update>
+
+    <delete id="delete">
+DELETE FROM seed WHERE id = #{id};
+    </delete>
+
+    <select id="list" resultType="com.example.domain.Seed">
+SELECT * FROM seed WHERE user_id = 1;
+    </select>
+
+    <select id="findById" resultType="com.example.domain.Seed">
+SELECT * FROM seed WHERE user_id = 1 AND id = #{id};
+    </select>
+
+</mapper>
